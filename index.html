@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="SHORTCUT ICON" sizes="16x16" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href='main.css'>
+    <title>Zoho Sheet - Office Integrator</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="fleft" id="title">ZohoSheet Office Integrator</div>
+        <button class="fright" id="savebtn">Save</button>
+        <button class="fright" id="exportbtn">Export</button>
+    </div>
+    <div>
+        <iframe id="sheetIframe"
+            src="https://sheet.localzoho.com/sheet/officeapi/v1/ea8a8e746233a8896a169485990af3ba0f3dd8605e947069b633601a6c99d289452fedc26249038f822908bf4c04c5c98f3dc548f836c2d866af8921d821f8d6"
+            style="width:100%;height:90vh;"></iframe>
+    </div>
+    <script type="text/javascript" src="main.js"></script>
+    <script>
+        (function (ctx) {
+            var savebtn = document.getElementById("savebtn");
+            var exportbtn = document.getElementById("exportbtn");
+            var sheetIframe = document.getElementById("sheetIframe");
+            XDC.setTarget({
+                "origin": "https://sheet.localzoho.com",
+                "window": document.getElementById("sheetIframe").contentWindow
+            });
+            savebtn.addEventListener("click", function () {
+                XDC.postMessage({
+                    "message": "SaveSpreadsheet",
+                    "data": {},
+                    "oncomplete": function (data) {
+                        console.log("success", data);
+                    },
+                    "onexception": function (data) {
+                        console.log("failed", data);
+                    }
+                });
+            })
+            exportbtn.addEventListener("click", function () {
+                XDC.postMessage({
+                    "message": "ExportSpreadsheet",
+                    "data": {
+                        "format": "xlsx"
+                    },
+                    "oncomplete": function (data) {
+                        console.log("success", data);
+                    },
+                    "onexception": function (data) {
+                        console.log("failed", data);
+                    }
+                });
+            })
+            XDC.receiveMessage("SaveSpreadsheetResponse", function(data) {
+                    console.log("SaveSpreadsheetResponse",data);
+            });
+            XDC.receiveMessage("ExportSpreadsheetResponse", function(data) {
+                     console.log("ExportSpreadsheetResponse",data);
+            });
+        }(this))
+    </script>
+</body>
+
+</html>

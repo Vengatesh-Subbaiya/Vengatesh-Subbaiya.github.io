@@ -1,0 +1,37 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: rgb(230, 231, 231);
+}
+#savebtn,#exportbtn {
+    padding: 5px 20px;
+    background: transparent;
+    color: #13ad6b;
+    border-radius: 30px;
+    box-shadow: 0 0 0 0 rgb(0 0 0 / 20%);
+    -webkit-appearance: none;
+    transition: all .2s ease;
+    border: 1px solid #03A764;
+    font-size: 13px;
+    margin: 20px 10px;
+    cursor : pointer;
+}
+
+.header{
+    overflow: hidden;
+    background-color: rgb(212, 222, 231);
+    border-radius: 10px;
+    margin: 4px 8px;
+}
+.fleft{
+    float: left;
+    text-align: center;
+    font-size: 25px;
+    margin: 10px 20px;
+    padding: 5px 20px;
+    font-weight: bolder;
+}
+.fright {
+    float: right;
+  }
