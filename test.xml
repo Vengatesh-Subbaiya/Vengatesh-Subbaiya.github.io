@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE title [ <!ELEMENT title ANY >
-<!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
 <!DOCTYPE data [
 <!ENTITY a0 "dos" >
 <!ENTITY a1 "&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;&a0;">
