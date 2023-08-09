@@ -14,61 +14,77 @@
 <body>
     <div class="header">
         <div class="fleft" id="title">ZohoSheet</div>
-        <button class="fright" id="savebtn">Save</button>
-        <button class="fright" id="exportbtn">Export</button>
+<!--         <button class="fright" id="savebtn">Save</button>
+        <button class="fright" id="exportbtn">Export</button> -->
+        <button class="fright" id="printbtn">Export</button>
     </div>
     <div>
 <!--         https://workdrive.zohoexternal.com/external/0119ce4ee586d41c75ad68600420077fa02686644ab24fb898e875fcc564a3bd -->
         
         <iframe id="sheetIframe"
-            src="https://sheet.zoho.in/sheet/officeapi/v1/969e4fe9e98f6d1b74a7707bf44a1eba97badb52d03f844572386e173f2b078d3ab0f634f975c6b20aabb33dc4d63f8dae24ad86dc7ef2eb1d90e8b1184a58db"
+            src="https://vengat-10141.csez.zohocorpin.com/sheet/open/rb97sd3049c8f7aee498d80b5068f57a16d93?sheetid=0&range=A1"
             style="width:100%;height:90vh;"></iframe>
     </div>
     <script type="text/javascript" src="main.js"></script>
     <script>
         (function (ctx) {
-            var savebtn = document.getElementById("savebtn");
-            var exportbtn = document.getElementById("exportbtn");
+            // var savebtn = document.getElementById("savebtn");
+            // var exportbtn = document.getElementById("exportbtn");
+             var printbtn = document.getElementById("printbtn");
             var sheetIframe = document.getElementById("sheetIframe");
             exportbtn.addEventListener("click", function () {
                 exportbtn.style.width = "200px";
             });
-//             XDC.setTarget({
-//                 "origin": "https://sheet.localzoho.com",
-//                 "window": document.getElementById("sheetIframe").contentWindow
-//             });
-//             savebtn.addEventListener("click", function () {
-//                 XDC.postMessage({
-//                     "message": "SaveSpreadsheet",
-//                     "data": {},
-//                     "oncomplete": function (data) {
-//                         console.log("success", data);
-//                     },
-//                     "onexception": function (data) {
-//                         console.log("failed", data);
-//                     }
-//                 });
-//             })
-//             exportbtn.addEventListener("click", function () {
-//                 XDC.postMessage({
-//                     "message": "ExportSpreadsheet",
-//                     "data": {
-//                         "format": "xlsx"
-//                     },
-//                     "oncomplete": function (data) {
-//                         console.log("success", data);
-//                     },
-//                     "onexception": function (data) {
-//                         console.log("failed", data);
-//                     }
-//                 });
-//             })
-//             XDC.receiveMessage("SaveSpreadsheetResponse", function(data) {
-//                     console.log("SaveSpreadsheetResponse",data);
-//             });
-//             XDC.receiveMessage("ExportSpreadsheetResponse", function(data) {
-//                      console.log("ExportSpreadsheetResponse",data);
-//             });
+            XDC.setTarget({
+                "origin": "https://vengat-10141.csez.zohocorpin.com",
+                "window": document.getElementById("sheetIframe").contentWindow
+            });
+
+            printbtn.addEventListener("click", function () {
+                XDC.postMessage({
+                    "message": "PrintSpreadSheet",
+                    "data": {},
+                    "oncomplete": function (data) {
+                        console.log("success", data);
+                    },
+                    "onexception": function (data) {
+                        console.log("failed", data);
+                    }
+                });
+            })
+            
+            // savebtn.addEventListener("click", function () {
+            //     XDC.postMessage({
+            //         "message": "SaveSpreadsheet",
+            //         "data": {},
+            //         "oncomplete": function (data) {
+            //             console.log("success", data);
+            //         },
+            //         "onexception": function (data) {
+            //             console.log("failed", data);
+            //         }
+            //     });
+            // })
+            // exportbtn.addEventListener("click", function () {
+            //     XDC.postMessage({
+            //         "message": "ExportSpreadsheet",
+            //         "data": {
+            //             "format": "xlsx"
+            //         },
+            //         "oncomplete": function (data) {
+            //             console.log("success", data);
+            //         },
+            //         "onexception": function (data) {
+            //             console.log("failed", data);
+            //         }
+            //     });
+            // })
+            XDC.receiveMessage("SaveSpreadsheetResponse", function(data) {
+                    console.log("SaveSpreadsheetResponse",data);
+            });
+            XDC.receiveMessage("ExportSpreadsheetResponse", function(data) {
+                     console.log("ExportSpreadsheetResponse",data);
+            });
         }(this))
     </script>
 </body>
