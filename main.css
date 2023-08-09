@@ -4,7 +4,7 @@ body{
     overflow: hidden;
     background-color: rgb(230, 231, 231);
 }
-#savebtn,#exportbtn {
+#savebtn,#exportbtn, #printbtn {
     padding: 5px 20px;
     background: transparent;
     color: #13ad6b;
